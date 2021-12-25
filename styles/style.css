@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+button, select{
+    cursor: pointer;
+}
+
 input{
     width: 40px;
     padding: 0.3rem 0.1rem;
@@ -12,16 +16,19 @@ input{
 
 button{
     padding: 0.3rem 0.5rem;
-    cursor: pointer;
 }
 
 .container{
     max-width: 960px;
     width: 100%;
     margin: 0 auto;
-    padding: 7rem 1rem 1rem 1rem;
+    padding: 3rem 1rem 1rem 1rem;
     text-align: center;
     border: 1px solid black;
+}
+
+.main-title{
+    margin-bottom: 1rem;
 }
 
 #dimensionSelector{
@@ -29,7 +36,10 @@ button{
 }
 
 #matrix{
+    width: min-content;
+    margin: 3rem auto 0 auto;
     display: grid;
+    gap: 0.3rem;
 }
 
 #calculateDetBtn{
