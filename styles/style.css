@@ -27,7 +27,7 @@ button{
 }
 
 .main-title{
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 #dimensionSelector{
@@ -43,4 +43,5 @@ button{
 
 #calculateDetBtn{
     margin-top: 2rem;
+    display: none;
 }

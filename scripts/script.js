@@ -2,7 +2,7 @@ const dimensionSelector = document.getElementById("dimensionSelector");
 const matrix = document.getElementById("matrix");
 const calculateDetBtn = document.getElementById("calculateDetBtn");
 
-function getSelectedOption() {
+function getSelectedDimension() {
     return dimensionSelector.options[dimensionSelector.selectedIndex].text;
 }
 
@@ -26,7 +26,12 @@ function numbersOnly(ev) {
 dimensionSelector.selectedIndex = 0;
 
 dimensionSelector.addEventListener("change", () => {
-    const dimension = +getSelectedOption();
+    const dimension = +getSelectedDimension();
+
+    if (!calculateDetBtn.style.display) {
+        calculateDetBtn.style.display = "inline-block";
+    }
+
     resetMatrix();
 
     matrix.style.gridTemplateColumns = `repeat(${dimension}, 40px)`;
