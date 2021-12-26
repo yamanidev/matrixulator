@@ -12,6 +12,16 @@ function resetMatrix() {
     }
 }
 
+function numbersOnly(ev) {
+    let key = ev.key;
+    // Accepts only integers
+    // Got lazy to accept decimals too
+    let regex = /^\d+$/;
+    if (!(regex.test(key))) {
+        ev.preventDefault();
+    }
+}
+
 // Reset selection
 dimensionSelector.selectedIndex = 0;
 
@@ -24,6 +34,7 @@ dimensionSelector.addEventListener("change", () => {
     for (let i = 0; i < dimension; i++) {
         for (let j = 0; j < dimension; j++) {
             let inputEl = document.createElement("input");
+            inputEl.addEventListener("keypress", numbersOnly);
             matrix.appendChild(inputEl);
         }
     }
