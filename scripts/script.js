@@ -7,8 +7,8 @@ function getSelectedDimension() {
 }
 
 function resetMatrix() {
-    while (matrix.lastChild) {
-        matrix.removeChild(matrix.lastChild);
+    while (matrix.firstChild) {
+        matrix.removeChild(matrix.firstChild);
     }
 }
 
