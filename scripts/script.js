@@ -1,5 +1,5 @@
 const dimensionSelector = document.getElementById("dimensionSelector");
-const matrix = document.getElementById("matrix");
+const matrixEl = document.getElementById("matrix");
 const calculateDetBtn = document.getElementById("calculateDetBtn");
 
 function getSelectedDimension() {
@@ -7,8 +7,8 @@ function getSelectedDimension() {
 }
 
 function resetMatrix() {
-    while (matrix.firstChild) {
-        matrix.removeChild(matrix.firstChild);
+    while (matrixEl.firstChild) {
+        matrixEl.removeChild(matrixEl.firstChild);
     }
 }
 
@@ -17,9 +17,26 @@ function numbersOnly(ev) {
     // Accepts only integers
     // Got lazy to accept decimals too
     let regex = /^\d+$/;
-    if (!(regex.test(key))) {
+    if (!regex.test(key)) {
         ev.preventDefault();
     }
+}
+
+function getMatrix() {
+    const dimension = getSelectedDimension();
+    const cells = document.getElementsByClassName("cell");
+    const matrix = [];
+    let row = [];
+
+    for (let i = 0; i < cells.length; i++) {
+        row.push(+cells[i].value);
+        if ((i + 1) % dimension == 0) {
+            matrix.push(row);
+            row = [];
+        }
+    }
+
+    return matrix;
 }
 
 // Reset selection
@@ -34,13 +51,14 @@ dimensionSelector.addEventListener("change", () => {
 
     resetMatrix();
 
-    matrix.style.gridTemplateColumns = `repeat(${dimension}, 40px)`;
+    matrixEl.style.gridTemplateColumns = `repeat(${dimension}, 40px)`;
 
     for (let i = 0; i < dimension; i++) {
         for (let j = 0; j < dimension; j++) {
             let inputEl = document.createElement("input");
+            inputEl.classList.add("cell");
             inputEl.addEventListener("keypress", numbersOnly);
-            matrix.appendChild(inputEl);
+            matrixEl.appendChild(inputEl);
         }
     }
 
