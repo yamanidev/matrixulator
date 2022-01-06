@@ -6,13 +6,28 @@ function getSelectedDimension() {
     return dimensionSelector.options[dimensionSelector.selectedIndex].text;
 }
 
+function createMatrix(dimension) {
+
+    matrixEl.style.gridTemplateColumns = `repeat(${dimension}, 40px)`;
+
+    for (let i = 0; i < dimension; i++) {
+        for (let j = 0; j < dimension; j++) {
+            let inputEl = document.createElement("input");
+            inputEl.classList.add("cell");
+            inputEl.addEventListener("keypress", acceptNumbersOnly);
+            matrixEl.appendChild(inputEl);
+        }
+    }
+
+}
+
 function resetMatrix() {
     while (matrixEl.firstChild) {
         matrixEl.removeChild(matrixEl.firstChild);
     }
 }
 
-function numbersOnly(ev) {
+function acceptNumbersOnly(ev) {
     let key = ev.key;
     // Accepts only integers
     // Got lazy to accept decimals too
@@ -51,17 +66,10 @@ dimensionSelector.addEventListener("change", () => {
 
     resetMatrix();
 
-    matrixEl.style.gridTemplateColumns = `repeat(${dimension}, 40px)`;
-
-    for (let i = 0; i < dimension; i++) {
-        for (let j = 0; j < dimension; j++) {
-            let inputEl = document.createElement("input");
-            inputEl.classList.add("cell");
-            inputEl.addEventListener("keypress", numbersOnly);
-            matrixEl.appendChild(inputEl);
-        }
-    }
+    createMatrix(dimension);
 
 });
+
+
 
 
