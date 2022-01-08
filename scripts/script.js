@@ -54,6 +54,38 @@ function getMatrix() {
     return matrix;
 }
 
+function getBiggestColumnIndex(matrix) {
+    return matrix[0].indexOf(Math.max(...matrix[0]));
+}
+
+function swapWithFirstCol(matrix, column) {
+    let dimension = matrix.length;
+    let swappedMatrix = [];
+    let row;
+
+    for (let rowIndex = 0; rowIndex < dimension; rowIndex++) {
+
+        row = [matrix[rowIndex][column]];
+
+        for (let columnIndex = 0; columnIndex < dimension; columnIndex++) {
+            if (columnIndex != column) {
+                row.push(matrix[rowIndex][columnIndex]);
+            }
+        }
+
+        swappedMatrix.push(row);
+    }
+
+    return swappedMatrix;
+}
+
+function calculateDet(matrix) {
+    let det = 1;
+
+
+
+}
+
 // Reset selection
 dimensionSelector.selectedIndex = 0;
 
@@ -69,6 +101,20 @@ dimensionSelector.addEventListener("change", () => {
     createMatrix(dimension);
 
 });
+
+function displayMatrix(matrix) {
+    for (let i = 0; i < 3; i++) {
+        console.log(`${matrix[i][0]} ${matrix[i][1]} ${matrix[i][2]}`);
+    }
+}
+
+// its determinant is 74
+let matrix = [
+    [1, 5, 3],
+    [2, 4, 7],
+    [4, 6, 2]
+];
+
 
 
 
