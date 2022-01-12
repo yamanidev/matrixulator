@@ -103,8 +103,15 @@ dimensionSelector.addEventListener("change", () => {
 });
 
 function displayMatrix(matrix) {
-    for (let i = 0; i < 3; i++) {
-        console.log(`${matrix[i][0]} ${matrix[i][1]} ${matrix[i][2]}`);
+    const dimension = matrix.length;
+    let rowString = "";
+
+    for (let rowIndex = 0; rowIndex < dimension; rowIndex++) {
+        for (let colIndex = 0; colIndex < dimension; colIndex++) {
+            rowString += `${matrix[rowIndex][colIndex]} `;
+        }
+        console.log(rowString);
+        rowString = "";
     }
 }
 
