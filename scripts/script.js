@@ -58,27 +58,6 @@ function getBiggestColumnIndex(matrix) {
     return matrix[0].indexOf(Math.max(...matrix[0]));
 }
 
-function swapWithFirstCol(matrix, column) {
-    let dimension = matrix.length;
-    let swappedMatrix = [];
-    let row;
-
-    for (let rowIndex = 0; rowIndex < dimension; rowIndex++) {
-
-        row = [matrix[rowIndex][column]];
-
-        for (let columnIndex = 0; columnIndex < dimension; columnIndex++) {
-            if (columnIndex != column) {
-                row.push(matrix[rowIndex][columnIndex]);
-            }
-        }
-
-        swappedMatrix.push(row);
-    }
-
-    return swappedMatrix;
-}
-
 function calculateDet(matrix) {
     let det = 1;
 
