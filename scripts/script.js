@@ -76,9 +76,7 @@ function getEasierEquivalent(matrix) {
     for (let colIndex = 0; colIndex < dimension; colIndex++) {
         if (colIndex !== maxIndex) {
             for (let rowIndex = 0; rowIndex < dimension; rowIndex++) {
-                console.log(`element before: ${matrix[rowIndex][colIndex]}`);
                 equivMatrix[rowIndex][colIndex] -= (matrix[0][colIndex] / max) * matrix[rowIndex][maxIndex];
-                console.log(`element after: ${equivMatrix[rowIndex][colIndex]}`);
             }
         }
     }
@@ -86,69 +84,50 @@ function getEasierEquivalent(matrix) {
     return equivMatrix;
 }
 
-function calculateDet(matrix) {
+// Gets inner matrix except rowToIgnore and colToIgnore
+function getInnerMatrix(matrix, rowToIgnore, colToIgnore) {
     const dimension = matrix.length;
+    let innerMatrix = [];
 
-    if (dimension === 1) {
-        return matrix[0][0];
-    }
-    else if (dimension === 2) {
-        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
-    }
-    else {
-        let det = 1;
-        let oldMatrix = matrix;
-        let oldDimension = dimension;
-        let newMatrix = [];
-        let maxIndex;
-
-        while (oldDimension > 2) {
-            console.log(`\tdet: ${det}`);
-
-            maxIndex = absoluteMaxIndex(oldMatrix[0]);
-            det *= ((-1) ** maxIndex) * oldMatrix[0][maxIndex];
-
-            console.log("\tMatrix");
-            displayMatrix(oldMatrix);
-
-            for (let colIndex = 0; colIndex < oldDimension; colIndex++) {
-                if (colIndex !== maxIndex) {
-                    for (let rowIndex = 0; rowIndex < oldDimension; rowIndex++) {
-                        oldMatrix[rowIndex][colIndex] -= (oldMatrix[rowIndex][colIndex] * oldMatrix[rowIndex][maxIndex]) / oldMatrix[0][maxIndex];
-                    }
-                }
-            }
-
-            console.log("\tModified matrix");
-            displayMatrix(oldMatrix);
-
+    for (let rowIndex = 0; rowIndex < dimension; rowIndex++) {
+        if (rowIndex !== rowToIgnore) {
             let row = [];
-
-            for (let rowIndex = 1; rowIndex < oldDimension; rowIndex++) {
-                for (let colIndex = 0; colIndex < oldDimension; colIndex++) {
-                    if (colIndex !== maxIndex) {
-                        row.push(oldMatrix[rowIndex][colIndex]);
-                    }
+            for (let colIndex = 0; colIndex < dimension; colIndex++) {
+                if (colIndex !== colToIgnore) {
+                    row.push(matrix[rowIndex][colIndex]);
                 }
-                newMatrix.push(row);
-                row = [];
             }
-
-            oldMatrix = newMatrix;
-            oldDimension = oldMatrix.length;
-
-
-
+            innerMatrix.push(row);
         }
-
-        console.log(`\tdet: ${det}`);
-
-        if (oldDimension === 2) {
-            det *= (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
-        }
-
-        return det;
     }
+
+    return innerMatrix;
+
+}
+
+
+function calculateDet(matrix) {
+    let newMatrix = matrix;
+    let newDimension = newMatrix.length;
+    let det = 1;
+
+    while (newDimension > 2) {
+        let maxIndex = absoluteMaxIndex(matrix[0]);
+        let max = matrix[0][maxIndex];
+
+        newMatrix = getEasierEquivalent(matrix);
+        newMatrix = getInnerMatrix(newMatrix, 0, maxIndex);
+        det *= ((-1) ** maxIndex) * max;
+
+        // Deep copying
+        matrix = JSON.parse(JSON.stringify(newMatrix));
+
+        newDimension = newMatrix.length;
+    }
+
+    det *= (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
+
+    return det;
 
 }
 
@@ -181,12 +160,28 @@ function displayMatrix(matrix) {
     }
 }
 
-// its determinant is 74
-let matrix = [
-    [1, 5, 3],
-    [2, 4, 7],
-    [4, 6, 2]
-];
+// Future tests and their expected values:
+
+// determinant: 74
+// let matrix = [
+//     [1, 5, 3],
+//     [2, 4, 7],
+//     [4, 6, 2]
+// ];
+
+// determinant: -222
+// let matrix = [
+//     [7, 2, 0],
+//     [3, -15, 0],
+//     [6, -4, 2]
+// ];
+
+// determinant: -32
+// let matrix = [
+//     [4, -3, 0],
+//     [2, -1, 2],
+//     [1, 5, 7]
+// ];
 
 
 
