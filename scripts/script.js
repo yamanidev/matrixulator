@@ -54,8 +54,15 @@ function getMatrix() {
     return matrix;
 }
 
-function getBiggestColumnIndex(matrix) {
-    return matrix[0].indexOf(Math.max(...matrix[0]));
+// Gets the index of the absolute maximum number
+function absoluteMaxIndex(arr) {
+    absoluteNums = [];
+
+    arr.forEach(num => {
+        absoluteNums.push(Math.abs(num));
+    });
+
+    return absoluteNums.indexOf(Math.max(...absoluteNums));
 }
 
 function calculateDet(matrix) {
