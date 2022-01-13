@@ -15,8 +15,6 @@ function calculateDet(matrix) {
         newMatrix = getInnerMatrix(newMatrix, 0, maxIndex);
         det *= ((-1) ** maxIndex) * max;
 
-        // Deep copying
-        // matrix = JSON.parse(JSON.stringify(newMatrix));
         matrix = newMatrix;
 
         newDimension = newMatrix.length;
