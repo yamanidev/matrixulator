@@ -1,0 +1,23 @@
+{
+  "name": "matrix-calculator",
+  "version": "1.0.0",
+  "description": "A website that offers classical operations on matrices.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yamanidev/matrix-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yamanidev/matrix-calculator/issues"
+  },
+  "homepage": "https://github.com/yamanidev/matrix-calculator#readme",
+  "devDependencies": {
+    "jest": "^27.4.7"
+  }
+}
