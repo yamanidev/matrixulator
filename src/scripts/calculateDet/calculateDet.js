@@ -22,7 +22,7 @@ function calculateDet(matrix) {
 
     det *= (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]);
 
-    return det;
+    return +det.toFixed(5);
 }
 
 export { calculateDet }
