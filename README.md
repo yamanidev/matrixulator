@@ -2,6 +2,12 @@
 
 A website that offers classical operations on matrices.
 
+## What I learned so far:
+- CommonJS vs ES modules.
+- Use Babel to compile ESM to CJM.
+- Install and configure Jest.
+- A taste of TDD.
+
 ### Done:
 - Calculate determinant
 
