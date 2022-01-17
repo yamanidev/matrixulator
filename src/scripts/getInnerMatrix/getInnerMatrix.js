@@ -15,6 +15,10 @@ function getInnerMatrix(matrix, rowToIgnore, colToIgnore) {
         }
     }
 
+    if (innerMatrix.length === 1) {
+        return [...innerMatrix[0]];
+    }
+
     return innerMatrix;
 }
 
