@@ -1,10 +1,8 @@
-function acceptNumbersOnly(ev) {
-    let key = ev.key;
-    // Accepts only integers
-    // Got lazy to accept decimals too
-    let regex = /^\d+$/;
-    if (!regex.test(key)) {
-        ev.preventDefault();
+function filterInput(e) {
+    let key = e.key;
+    let pattern = /\-|\d|\./;
+    if (!pattern.test(key)) {
+        e.preventDefault();
     }
 }
 
@@ -16,11 +14,10 @@ function createMatrix(dimension, matrixEl) {
         for (let j = 0; j < dimension; j++) {
             let inputEl = document.createElement("input");
             inputEl.classList.add("cell");
-            inputEl.addEventListener("keypress", acceptNumbersOnly);
+            inputEl.addEventListener("keypress", filterInput);
             matrixEl.appendChild(inputEl);
         }
     }
-
 }
 
 export { createMatrix }
