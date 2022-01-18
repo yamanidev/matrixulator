@@ -17,8 +17,8 @@ A website that offers classical operations on matrices.
 - Find better names for variables/functions etc. it's a mess
 - Remember previous session's selection
 - Random matrix generator
-- Interpret and read "," keystroke as "."
+- Interpret and read `,` keystroke as `.`
 
 #### Bugs to fix:
-- Not accepting negative numbers (not matching "-")
+- Not accepting negative numbers (not matching `-`)
 
