@@ -2,6 +2,7 @@ import { getSelectedDimension } from "./utils/getSelectedDimension.js";
 import { createMatrix } from "./utils/createMatrix.js";
 import { resetMatrix } from "./utils/resetMatrix.js";
 import { calculateDet } from "./calculateDet/calculateDet.js";
+import { displayMatrix } from "./utils/displayMatrix.js";
 
 const dimensionSelector = document.getElementById("dimensionSelector");
 const matrixEl = document.getElementById("matrix");
@@ -25,6 +26,19 @@ function getMatrix() {
     return matrix;
 }
 
+function validateCells() {
+    const cells = document.getElementsByClassName("cell");
+    let pattern = /^-?(\d*)(\.\d+)?$/;
+
+    for (const cell of cells) {
+        if (!pattern.test(cell.value)) {
+            cell.classList.add("faulty");
+        }
+    }
+
+    return document.getElementsByClassName("faulty").length === 0;
+}
+
 // Reset selection
 dimensionSelector.selectedIndex = 0;
 
@@ -37,12 +51,19 @@ dimensionSelector.addEventListener("change", () => {
     if (!calculateDetBtn.style.display) {
         calculateDetBtn.style.display = "inline-block";
     }
-
-
 });
 
 calculateDetBtn.addEventListener("click", () => {
-    const matrix = getMatrix();
-    resultEl.innerText = `Result: ${calculateDet(matrix)}`;
+
+    if (validateCells()) {
+        const matrix = getMatrix();
+        displayMatrix(matrix);
+        resultEl.innerHTML = `Result &#8776; ${calculateDet(matrix)}`;
+    }
+    else {
+        alert("You provided invalid input!\nPlease check again.");
+    }
+
+
 });
 
