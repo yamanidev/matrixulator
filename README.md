@@ -18,6 +18,7 @@ A website that offers classical operations on matrices.
 - Remember previous session's selection
 - Random matrix generator
 - Interpret and read `,` keystroke as `.`
+- Add range slider to increase the size of the cells
 
 #### Bugs to fix:
 - Not accepting negative numbers (not matching `-`)
