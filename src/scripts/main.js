@@ -28,6 +28,13 @@ function getMatrix() {
 
 function validateCells() {
     const cells = document.getElementsByClassName("cell");
+
+    for (const cell of cells) {
+        if (cell.classList.contains("faulty")) {
+            cell.classList.remove("faulty");
+        }
+    }
+
     let pattern = /^-?(\d*)(\.\d+)?$/;
 
     for (const cell of cells) {
