@@ -10,6 +10,7 @@ A website that offers classical operations on matrices.
 
 ### Done:
 - Calculate determinant
+- Fixed bug: Not accepting negative numbers (not matching `-`)
 
 ### To do:
 - Addition/subtraction
@@ -21,5 +22,5 @@ A website that offers classical operations on matrices.
 - Add range slider to increase the size of the cells
 
 #### Bugs to fix:
-- Not accepting negative numbers (not matching `-`)
+
 
