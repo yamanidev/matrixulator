@@ -38,7 +38,7 @@ function validateCells() {
     let pattern = /^-?(\d*)(\.\d+)?$/;
 
     for (const cell of cells) {
-        if (!pattern.test(cell.value)) {
+        if (!pattern.test(cell.value) || !cell.value) {
             cell.classList.add("faulty");
         }
     }
