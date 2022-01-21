@@ -2,26 +2,26 @@ import { getInnerMatrix } from "../../src/scripts/getInnerMatrix/getInnerMatrix.
 
 describe("Checking for correct inner matrices of 2x2 ones", () => {
 
-    it("should return [14]", () => {
+    it("should return [[14]]", () => {
 
         const matrix = [
             [14, 10],
             [15, 5]
         ];
 
-        expect(getInnerMatrix(matrix, 1, 1)).toEqual([14]);
+        expect(getInnerMatrix(matrix, 1, 1)).toEqual([[14]]);
 
     });
 
 
-    it("should return [0]", () => {
+    it("should return [[0]]", () => {
 
         const matrix = [
             [8, 0],
             [13, 5]
         ];
 
-        expect(getInnerMatrix(matrix, 1, 0)).toEqual([0]);
+        expect(getInnerMatrix(matrix, 1, 0)).toEqual([[0]]);
 
     });
 
