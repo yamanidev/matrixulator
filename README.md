@@ -10,7 +10,7 @@ A website that offers classical operations on matrices.
 
 ### Done:
 - Calculate determinant
-- Fixed bug: Not accepting negative numbers (not matching `-`)
+- Fixed bug: Not accepting negative numbers (not matching `-` in regex)
 
 ### To do:
 - Addition/subtraction
@@ -20,6 +20,8 @@ A website that offers classical operations on matrices.
 - Random matrix generator
 - Interpret and read `,` keystroke as `.`
 - Add range slider to increase the size of the cells
+- Build the website as a single page application using Angular
+- Use the testing framework provided by Angular. Is that even a thing? No idea
 
 #### Bugs to fix:
 
