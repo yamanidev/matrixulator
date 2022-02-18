@@ -1,5 +1,4 @@
-# About
-
+# Matrixulator
 A website that offers classical operations on matrices.
 
 ## What I learned so far:
@@ -24,5 +23,7 @@ A website that offers classical operations on matrices.
 - Use the testing framework provided by Angular. Is that even a thing? No idea
 
 #### Bugs to fix:
+Undefined for the moment.
 
-
+## Credits
+The name of this project was a suggestion from my friend [Djamel](https://twitter.com/djamelbenalidev)
